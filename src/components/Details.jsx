@@ -39,7 +39,7 @@ const Details = ({ props }) => {
         {props.description}
       </div>
       <div className="details">
-        <div className="detail">
+        <div className="">
           {dets.map((det) => {
             return (
               <div className="flex" key={det.title}>
