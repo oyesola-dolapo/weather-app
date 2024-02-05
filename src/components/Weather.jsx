@@ -5,6 +5,7 @@ import Details from "./Details";
 const Weather = () => {
   const [location, setLocation] = useState("");
   const [weather, setWeather] = useState("");
+  const [feel, setFeel] = useState("");
   const [description, setDescription] = useState("");
   const [humidity, setHumidity] = useState("");
   const [speed, setSpeed] = useState("");
@@ -24,6 +25,7 @@ const Weather = () => {
     longitude,
     latitude,
     value,
+    feel
   };
 
   const searchWeather = async (event) => {
@@ -37,6 +39,7 @@ const Weather = () => {
       setLocation(data.name);
       setWeather(data.main.temp);
       setDescription(data.weather[0].description);
+      setFeel(data.main.feels_like)
       setHumidity(data.main.humidity);
       setSpeed(data.wind.speed);
       setLongitude(data.coord.lon);

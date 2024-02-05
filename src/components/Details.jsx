@@ -33,9 +33,10 @@ const Details = ({ props }) => {
     <div className="right py-4 md:w-1/2 flex flex-col items-center sm:py-12 text-white">
       <div className="location text-4xl  font-bold">{props.location}</div>
       <div className="icon"></div>
-      <div className="weather text-7xl my-6 font-medium">
+      <div className="weather text-7xl mt-6 font-medium">
         {`${props.weather} \u00B0C`}
-      </div>
+          </div>
+          <div className="flex gap-2 mb-4 items-center text-lg" >Feels like <p className="text-xl  font-medium">{props.feel}</p></div>
       <div className="description text-2xl font-medium">
         {props.description}
       </div>
