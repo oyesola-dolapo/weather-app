@@ -1,27 +1,28 @@
 import React from "react";
+import styles from "./Details.module.css";
 
 const Details = ({ props }) => {
   const dets = [
     {
-      icon: "",
+      icon: "../../icons/humidity.png",
       sign: "%",
       title: "Humidity",
       prop: props.humidity,
     },
     {
-      icon: "",
+      icon: "../../icons/wind.png",
       sign: "KM/H",
       title: "Wind Speed",
       prop: props.speed,
     },
     {
-      icon: "",
+      icon: "../../icons/lon.png",
       sign: "",
       title: "Longitude",
       prop: props.longitude,
     },
     {
-      icon: "",
+      icon: "../../icons/lat.png",
       sign: "",
       title: "Latitude",
       prop: props.latitude,
@@ -29,82 +30,32 @@ const Details = ({ props }) => {
   ];
 
   return (
-    <div className="right w-1/2 border-2 flex flex-col items-center py-12 text-white">
+    <div className="right py-4 md:w-1/2 flex flex-col items-center sm:py-12 text-white">
       <div className="location text-4xl  font-bold">{props.location}</div>
       <div className="icon"></div>
       <div className="weather text-7xl my-6 font-medium">
-        {props.weather === "" ? `${props.weather}` : `${props.weather} C`}
+        {`${props.weather} \u00B0C`}
       </div>
       <div className="description text-2xl font-medium">
         {props.description}
       </div>
-      <div className="details">
-        <div className="">
-          {dets.map((det) => {
-            return (
-              <div className="flex" key={det.title}>
-                <div className="icon">{det.icon}</div>
-                <div className="text">
-                  {det.prop === "" ? null : (
-                    <div>
-                      <p>
-                        {det.prop}
-                        {det.sign}
-                      </p>
-                      <p>{det.title}</p>
-                    </div>
-                  )}
-                </div>
+      <div className={`${styles.details} rounded mt-12 md:mt-auto`}>
+        {dets.map((det) => {
+          return (
+            <div
+              className={`${styles.detail} flex w-1/2 gap-4 py-4 p-2 md:p-6`}
+              key={det.title}>
+              <img src={det.icon} alt="" className="w-[2rem] h-[2rem]"/>
+              <div className="text">
+                <p className="text-sm md:text-lg">
+                  {det.prop}
+                  {det.sign}
+                </p>
+                <p className="text-sm md:text-xl">{det.title}</p>
               </div>
-            );
-          })}
-        </div>
-        {/* <div className="detail">
-          <div className="humidity flex">
-            <div className="icon"></div>
-            <div className="text">
-              {props.humidity === "" ? null : (
-                <div>
-                  <p>{props.humidity}%</p>
-                  <p>Humidity</p>
-                </div>
-              )}
             </div>
-          </div>
-          <div className="wind-speed">
-            <div className="icon"></div>
-            <div className="text">
-              {props.speed === "" ? null : (
-                <div>
-                  <p>{props.speed}Km/h</p>
-                  <p>Wind Speed</p>
-                </div>
-              )}
-            </div>
-          </div>
-          <div className="longitude">
-            <div className="icon"></div>
-            <div className="text">
-              {props.speed === "" ? null : (
-                <div>
-                  <p>{props.speed}Km/h</p>
-                  <p>Longitude</p>
-                </div>
-              )}
-            </div>
-          </div>
-          <div className="latitude">
-            <div className="icon"></div>
-            <div className="text">
-              {props.speed === "" ? null : (
-                <div>
-                  <p>{props.speed}Km/h</p>
-                  <p>Latitude</p>
-                </div>
-              )}
-            </div>
-          </div>
-        </div> */}
+          );
+        })}
       </div>
     </div>
   );

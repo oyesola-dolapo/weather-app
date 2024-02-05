@@ -1,0 +1,15 @@
+.details {
+  display: flex;
+  flex-wrap: wrap;
+  width: 90%;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.25);
+  backdrop-filter: blur(1px);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  margin-top: auto;
+}
+
+.detail:not(:last-child){
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    border-right: 2px solid rgba(255, 255, 255, 0.2);
+}

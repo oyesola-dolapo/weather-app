@@ -10,6 +10,10 @@ const Weather = () => {
   const [speed, setSpeed] = useState("");
   const [longitude, setLongitude] = useState("");
   const [latitude, setLatitude] = useState("");
+  const [value, setValue] = useState("");
+  const inputChange = (e) => {
+    setValue(e.target.value);
+  };
 
   const props = {
     location,
@@ -19,11 +23,7 @@ const Weather = () => {
     speed,
     longitude,
     latitude,
-  };
-
-  const [value, setValue] = useState("");
-  const inputChange = (e) => {
-    setValue(e.target.value);
+    value,
   };
 
   const searchWeather = async (event) => {
@@ -46,29 +46,34 @@ const Weather = () => {
   };
 
   return (
-    <div className={`${styles.container} min-w-full flex`}>
+    <div className={`${styles.container} min-w-full md:flex`}>
       <div className={`${styles["blur-overlay"]} -z-10`}></div>
-      <div className="left w-1/2 border-2 p-12">
-        <header className="text-white text-4xl font-medium mb-8">
-          WEATHER APP
-        </header>
-        <form action="" className="bg-white p-1 w-max" onSubmit={searchWeather}>
-          <input
-            type="text"
-            id="country_input"
-            className={` bg-transparent h-full border-none outline-none px-2 w-[20rem]`}
-            placeholder="Enter Location"
-            onChange={inputChange}
-            value={value}
-          />
-          <button
-            type="submit"
-            className="search h-full bg-[#89af07] text-white py-2 px-4">
-            Search
-          </button>
-        </form>
+      <div className="left md:w-1/2 p-4 py-12 md:p-12">
+        <div>
+          <header className="text-white text-2xl md:text-4xl font-medium mb-4 md:mb-8">
+            WEATHER APP
+          </header>
+          <form
+            action=""
+            className="flex items-center bg-white p-1 sm:w-max rounded"
+            onSubmit={searchWeather}>
+            <input
+              type="text"
+              id="country_input"
+              className={` bg-transparent h-full border-none outline-none px-2 w-[80%] sm:w-[20rem]`}
+              placeholder="Enter Location"
+              onChange={inputChange}
+              value={value}
+            />
+            <button
+              type="submit"
+              className="search ml-auto rounded h-full bg-[#89af07] text-white py-2 px-4">
+              Search
+            </button>
+          </form>
+        </div>
       </div>
-      <Details props={props} />
+      {location !== "" && <Details props={props} />}
     </div>
   );
 };
